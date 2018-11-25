@@ -4,7 +4,8 @@ module Problems110
   myButLast,
   myButLast',
   elementAt,
-  elementAt'
+  elementAt',
+  myLength
 ) where
 
 myLast :: [a] -> a
@@ -28,3 +29,7 @@ elementAt (x:xs) 1 = x
 elementAt (x:xs) y = elementAt xs (y - 1)
 
 elementAt' xs n = head $ drop (n - 1) xs
+
+myLength :: [a] -> Int
+myLength [] = 0
+myLength (x:xs) = 1 + myLength xs

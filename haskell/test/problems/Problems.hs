@@ -9,7 +9,7 @@ main :: IO ()
 main = do
   defaultMain (testGroup "Our Library Tests"
     [numberLast, numberLast', stringLast, stringLast', numberButLast', numberButLast', stringButLast, stringButLast',
-    numberAt, numberAt'])
+    numberAt, numberAt', testLength])
 
 numberLast :: TestTree
 numberLast = testCase "Testing last element"
@@ -50,3 +50,9 @@ numberAt = testCase "Testing element at position 2"
 numberAt' :: TestTree
 numberAt' = testCase "Testing element at position 2"
   (assertEqual "Should get 1" 1 (elementAt' [1, 2, 3, 4] 1))
+
+testLength :: TestTree
+testLength = testGroup "Length tests"
+  [ testCase "Length of list" $ assertEqual "Should get 2" 2 (myLength [1, 2])
+  , testCase "Length of empty list" $ assertEqual "Should be 0" 0 (myLength [])
+  ]
