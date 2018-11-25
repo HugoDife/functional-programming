@@ -45,8 +45,8 @@ stringButLast' = testCase "Testing last but one character element"
 
 numberAt :: TestTree
 numberAt = testCase "Testing element at position 2"
-  (assertEqual "Should get 2" 2 (elementAt [1, 2, 3, 4] 1))
+  (assertEqual "Should get 2" 2 (elementAt [1, 2, 3, 4] 2))
 
 numberAt' :: TestTree
 numberAt' = testCase "Testing element at position 2"
-  (assertEqual "Should get 2" 2 (elementAt' [1, 2, 3, 4] 1))
+  (assertEqual "Should get 1" 1 (elementAt' [1, 2, 3, 4] 1))
