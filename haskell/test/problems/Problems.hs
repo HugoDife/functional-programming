@@ -8,7 +8,8 @@ import Problems110
 main :: IO ()
 main = do
   defaultMain (testGroup "Our Library Tests"
-    [numberLast, numberLast', stringLast, stringLast', numberButLast', numberButLast', stringButLast, stringButLast'])
+    [numberLast, numberLast', stringLast, stringLast', numberButLast', numberButLast', stringButLast, stringButLast',
+    numberAt, numberAt'])
 
 numberLast :: TestTree
 numberLast = testCase "Testing last element"
@@ -41,3 +42,11 @@ stringButLast = testCase "Testing last but one character element"
 stringButLast' :: TestTree
 stringButLast' = testCase "Testing last but one character element"
   (assertEqual "Should get s" 's' (myButLast' "the last"))
+
+numberAt :: TestTree
+numberAt = testCase "Testing element at position 2"
+  (assertEqual "Should get 2" 2 (elementAt [1, 2, 3, 4] 1))
+
+numberAt' :: TestTree
+numberAt' = testCase "Testing element at position 2"
+  (assertEqual "Should get 2" 2 (elementAt' [1, 2, 3, 4] 1))
