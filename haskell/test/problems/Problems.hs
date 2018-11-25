@@ -8,40 +8,24 @@ import Problems110
 main :: IO ()
 main = do
   defaultMain (testGroup "Our Library Tests"
-    [numberLast, numberLast', stringLast, stringLast', numberButLast', numberButLast', stringButLast, stringButLast',
-    numberAt, numberAt', testLength])
+    [lastTests, butLastTests, numberAt, numberAt', testLength])
 
-numberLast :: TestTree
-numberLast = testCase "Testing last element"
-  (assertEqual "Should get 4" 4 (myLast [1, 2, 3, 4]))
+lastTests :: TestTree
+lastTests = testGroup "Last element tests"
+   [ testCase "Testing last element" (assertEqual "Should get 4" 4 (myLast [1, 2, 3, 4]))
+   , testCase "Testing last element (second function)" (assertEqual "Should get 4" 4 (myLast' [1, 2, 3, 4]))
+   , testCase "Testing last character element" (assertEqual "Should get t" 't' (myLast "the last"))
+   , testCase "Testing last character element (second function)" (assertEqual "Should get t" 't' (myLast' "the last"))
+   ]
 
-numberLast' :: TestTree
-numberLast' = testCase "Testing last element"
-  (assertEqual "Should get 4" 4 (myLast' [1, 2, 3, 4]))
-
-stringLast :: TestTree
-stringLast = testCase "Testing last character element"
-  (assertEqual "Should get t" 't' (myLast "the last"))
-
-stringLast' :: TestTree
-stringLast' = testCase "Testing last character element"
-  (assertEqual "Should get t" 't' (myLast' "the last"))
-
-numberButLast :: TestTree
-numberButLast = testCase "Testing last but one number"
-  (assertEqual "Should get 3" 3 (myButLast [1, 2, 3, 4]))
-
-numberButLast' :: TestTree
-numberButLast' = testCase "Testing last but one number"
-  (assertEqual "Should get 3" 3 (myButLast' [1, 2, 3, 4]))
-
-stringButLast :: TestTree
-stringButLast = testCase "Testing last but one character element"
-  (assertEqual "Should get s" 's' (myButLast "the last"))
-
-stringButLast' :: TestTree
-stringButLast' = testCase "Testing last but one character element"
-  (assertEqual "Should get s" 's' (myButLast' "the last"))
+butLastTests :: TestTree
+butLastTests = testGroup "Last element tests"
+  [ testCase "Testing last but one number" (assertEqual "Should get 3" 3 (myButLast [1, 2, 3, 4]))
+  , testCase "Testing last but one number (second function)" (assertEqual "Should get 3" 3 (myButLast' [1, 2, 3, 4]))
+  , testCase "Testing last but one character element" (assertEqual "Should get s" 's' (myButLast "the last"))
+  , testCase "Testing last but one character element (second function)"
+    (assertEqual "Should get s" 's' (myButLast' "the last"))
+  ]
 
 numberAt :: TestTree
 numberAt = testCase "Testing element at position 2"
